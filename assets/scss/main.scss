@@ -1,0 +1,92 @@
+@import "./reset.scss";
+@import "./variables.scss";
+
+body {
+  background-color: $bodyBackground;
+
+  .container {
+    max-width: 600px;
+    margin: 50px auto;
+    background-color: $backgroundColor;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    padding: 30px;
+
+    .title {
+      font-family: $secondFont;
+      text-align: center;
+      font-size: 40px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .task-form {
+      display: flex;
+
+      .task-input {
+        width: calc(100% - 90px);
+        padding: 10px;
+        border: 1px solid $firstGrey;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        font-size: 16px;
+        flex-grow: 1;
+        margin-right: 10px;
+      }
+
+      .add-btn {
+        width: 20%;
+        margin-bottom: 20px;
+        background-color: $firstGreen;
+        border: none;
+        color: $white;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s ease;
+      }
+
+      .add-btn:hover {
+        background-color: $secondGreen;
+      }
+    }
+
+    .task-list {
+      padding: 0;
+
+      label {
+        font-family: $thirdFont;
+        font-size: 28px;
+        margin-left: 15px;
+      }
+
+      .task-completed label {
+        text-decoration: line-through;
+        color: $secondGrey;
+      }
+
+      .corbeille-img {
+        width: 3%;
+        margin-left: 25px;
+        cursor: pointer;
+      }
+    }
+
+    .remove-btn {
+      width: 100%;
+      padding: 10px;
+      background-color: $firstRed;
+      border: none;
+      color: $white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+      margin-top: 20px;
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: $secondRed;
+      }
+    }
+  }
+}
