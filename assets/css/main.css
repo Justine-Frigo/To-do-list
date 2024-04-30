@@ -54,6 +54,14 @@ body .container .task-form .add-btn:hover {
 body .container .task-list {
   padding: 0;
 }
+body .container .task-list li {
+  margin-bottom: 10px;
+  border-radius: 5px;
+  background-color: #FCD2A5;
+}
+body .container .task-list li input {
+  margin-left: 10px;
+}
 body .container .task-list label {
   font-family: "Cedarville Cursive", cursive;
   font-size: 28px;

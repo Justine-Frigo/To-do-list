@@ -10,19 +10,21 @@ function renderTasks() {
 
   tasks.forEach((task, index) => {
     const taskElement = document.createElement("li");
-    const taskCheckbox = document.createElement("input");
-    const taskLabel = document.createElement("label");
-    const corbeilleImage = document.createElement("img");
+    taskElement.draggable = true;
+    taskElement.dataset.index = index;
 
+    const taskCheckbox = document.createElement("input");
     taskCheckbox.type = "checkbox";
     taskCheckbox.checked = task.completed;
     taskCheckbox.addEventListener("change", () => {
       toggleTaskCompleted(index);
     });
 
+    const taskLabel = document.createElement("label");
     taskLabel.textContent = task.title;
     taskLabel.htmlFor = `task-${index}`;
 
+    const corbeilleImage = document.createElement("img");
     corbeilleImage.src = "./assets/image/trash-can-solid.svg";
     corbeilleImage.alt = "delete";
     corbeilleImage.classList.add("corbeille-img");
@@ -81,3 +83,42 @@ addTaskButton.addEventListener("click", addTask);
 removeCompletedButton.addEventListener("click", clearCompletedTasks);
 
 renderTasks();
+
+let draggedItem = null;
+
+taskList.addEventListener("dragstart", (e) => {
+  draggedItem = e.target;
+  e.target.style.opacity = "0.5";
+});
+
+taskList.addEventListener("dragend", () => {
+  draggedItem.style.opacity = "1";
+});
+
+taskList.addEventListener("dragover", (e) => {
+  e.preventDefault();
+});
+
+taskList.addEventListener("dragenter", (e) => {
+  e.preventDefault();
+  if (e.target.tagName === "LI") {
+    e.target.style.backgroundColor = "rgba(0, 0, 0, 0.1)";
+  }
+});
+
+taskList.addEventListener("dragleave", (e) => {
+  if (e.target.tagName === "LI") {
+    e.target.style.backgroundColor = "";
+  }
+});
+
+taskList.addEventListener("drop", (e) => {
+  if (e.target.tagName === "LI") {
+    const dropIndex = e.target.dataset.index;
+    const dragIndex = draggedItem.dataset.index;
+    const temp = tasks[dropIndex];
+    tasks[dropIndex] = tasks[dragIndex];
+    tasks[dragIndex] = temp;
+    renderTasks();
+  }
+});
