@@ -13,6 +13,8 @@ The To-do List project is a simple web application built using HTML, CSS, SCSS, 
 ## Preview
 
 You can view a live preview of the project [here](https://justine-frigo.github.io/To-do-list/).
+![image](https://github.com/user-attachments/assets/3806775f-9443-44b5-a2ea-21a3792a3f4e)
+
 
 ## Installation
 
